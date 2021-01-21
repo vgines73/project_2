@@ -1,8 +1,9 @@
 const express = require('express');
 
-// Routes go here
-const routes = require('./controllers/controller');
-app.use(routes);
+// const htmlRouter = require('./routes/html-routes.js');
+// const authorRouter = require('./routes/author-api-routes.js');
+// const apiRouter = require('./routes/post-api-routes.js');
+
 // Sets up the Express App
 const app = express();
 const PORT = process.env.PORT || 8080;
@@ -14,11 +15,19 @@ const db = require('./models');
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// Set Handlebars.
+const exphbs = require('express-handlebars');
+
+app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
+app.set('view engine', 'handlebars');
+
 // Static directory
 app.use(express.static('public'));
 
 // Invoke routes
-
+// htmlRouter(app);
+// authorRouter(app);
+// apiRouter(app);
 
 // Syncing our sequelize models and then starting our Express app
 db.sequelize.sync({ force: true }).then(() => {
