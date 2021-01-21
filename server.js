@@ -1,7 +1,8 @@
 const express = require('express');
 
 // Routes go here
-
+const routes = require('./controllers/controller');
+app.use(routes);
 // Sets up the Express App
 const app = express();
 const PORT = process.env.PORT || 8080;
