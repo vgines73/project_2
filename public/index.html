@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+   <meta charset="utf-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+
+   <title>floating peak</title>
+
+   <!-- STYLESHEETS -->
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+   <link rel="stylesheet" href="../public/css/styles.css">
+
+   <!-- VENDOR SCRIPTS -->
+   <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
+
+
+   <!-- APPLICATION SCRIPTS -->
+   <script src="./js/app.js"></script>
+
+
+  </head>
+
+  <body>
+
+    <div class="jumbotron">
+      <div class="container">
+        <h1>floating peak</h1>
+        <p>share beautiful scenery with the world</p>
+      </div>
+    </div>
+
+    <div id="photos">
+      <script id="pic-template" type="text/x-handlebars-template">
+        <div class="container photo-post" data-photo-id="{{_id}}">
+          <div class="row">
+            <div class="col-sm-6">
+              <h3 class='title'>{{title}}</h3>
+              <p class='about'>{{about}}</p>
+              <p>Tags</p>
+              <ul class='tags-list'>{{#each tags}}<li class='tag-item' data-tag-id="{{_id}}">{{tag}}</li> {{/each}}</ul>
+              <button class='btn btn-default edit-photo'>Edit</button>
+              <button class='btn btn-success save-photo hidden'>Save Changes</button>
+              <button class='btn btn-danger delete-photo hidden' data-photo-id="{{_id}}">Delete Post</button>
+              <button type="button" class="btn btn-info cancel hidden">Cancel</button>
+            </div>
+            <div class="col-sm-6">
+              <img src="{{url}}" class='rendered-image'></img>
+            </div>
+          </div>
+        </div>
+      </script>
+    </div>
+
+    <!-- BEGIN FORM -->
+    <section id='photo-share' class="container">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+          <form class="form-horizontal">
+            <fieldset>
+
+              <!-- Form Name -->
+              <legend>Share an Image</legend>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="name">Title</label>
+                <div class="col-md-4">
+                  <input id="name" name="title" type="text" placeholder="" class="form-control input-md" required="">
+                </div>
+              </div>
+
+              <!-- Textarea -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="about">About Your Scene</label>
+                <div class="col-md-4">
+                  <textarea class="form-control" id="about" name="about" placeholder="Tell your story..." required=""></textarea>
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="url">URL</label>
+                <div class="col-md-4">
+                  <input id="url" name="url" type="text" placeholder="www.example.com/image.jpg" class="form-control input-md" required="">
+                </div>
+              </div>
+
+              <!-- Text input-->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="tags">Tags (seperated by commas)</label>
+                <div class="col-md-4">
+                  <input id="tags" name="tags" type="text" placeholder="dreamcatcher, cleanse, tumblr" class="form-control input-md" required="">
+                </div>
+              </div>
+
+              <!-- Button -->
+              <div class="form-group">
+                <label class="col-md-4 control-label" for="singlebutton"></label>
+                <div class="col-md-4">
+                  <button id="singlebutton" name="singlebutton" class="btn btn-primary">Save</button>
+                  <button onclick="location.href = 'https://youtu.be/dQw4w9WgXcQ';" class='btn btn-danger'>¯\_(ツ)_/¯</button>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- END FORM -->
+
+  </body>
+
+  <footer>
+    <div class='panel-footer'>
+      <p>Created by: Bryan Smith</p>
+    </div>
+  </footer>
+
+</html>
