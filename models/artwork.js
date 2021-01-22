@@ -42,6 +42,13 @@ module.exports = (sequelize, DataTypes) => {
           len: [1],
         },
       },
+      images: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isUrl: true,
+        },
+      },
     });
   
     Artwork.associate = (models) => {
