@@ -1,5 +1,6 @@
 const express = require('express');
 
+// Requiring our Routes
 // const htmlRouter = require('./routes/html-routes.js');
 // const authorRouter = require('./routes/author-api-routes.js');
 // const apiRouter = require('./routes/post-api-routes.js');
@@ -14,12 +15,6 @@ const db = require('./models');
 // Sets up the Express app to handle data parsing
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-
-// Set Handlebars.
-const exphbs = require('express-handlebars');
-
-app.engine('handlebars', exphbs({ defaultLayout: 'main' }));
-app.set('view engine', 'handlebars');
 
 // Static directory
 app.use(express.static('public'));

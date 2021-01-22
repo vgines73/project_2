@@ -7,10 +7,47 @@ module.exports = (sequelize, DataTypes) => {
           len: [1],
         },
       },
-      body: {
+      postedBy: { // link to artist page
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isUrl: true,
+        },
+      },
+      year: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isDate: true,
+        },
+      },
+      body: { // description
         type: DataTypes.TEXT,
         allowNull: false,
-        len: [1],
+        validate: {
+          len: [1],
+        },
+      },
+      category: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [3],
+        },
+      },
+      condition: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1],
+        },
+      },
+      images: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          isUrl: true,
+        },
       },
     });
   
