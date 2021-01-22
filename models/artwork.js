@@ -52,8 +52,8 @@ module.exports = (sequelize, DataTypes) => {
     });
   
     Artwork.associate = (models) => {
-      // We're saying that a Post should belong to an Author
-      // A Post can't be created without an Author due to the foreign key constraint
+      // We're saying that Artwork should belong to an Artist
+      // Artwork can't be created without an Author due to the foreign key constraint
       Artwork.belongsTo(models.Artist, {
         foreignKey: {
           allowNull: false,

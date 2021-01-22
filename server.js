@@ -2,7 +2,7 @@ const express = require('express');
 
 // Requiring our Routes
 const htmlRouter = require('./routes/html-routes.js');
-// const authorRouter = require('./routes/author-api-routes.js');
+const artistRouter = require('./routes/artist-api-routes.js');
 // const apiRouter = require('./routes/post-api-routes.js');
 
 // Sets up the Express App
@@ -21,7 +21,7 @@ app.use(express.static('public'));
 
 // Invoke routes
 htmlRouter(app);
-// artistRouter(app);
+artistRouter(app);
 // apiRouter(app);
 
 // Syncing our sequelize models and then starting our Express app
