@@ -13,8 +13,9 @@ module.exports = (app) => {
   // cms route loads cms.html
   app.get('/artist', (req, res) =>
     res.sendFile(path.join(__dirname, '../public/artist.html'))
-  )};
+  );
 
-  app.get('/artwork', (req, res) => {
+  app.get('/artwork', (req, res) => 
       res.sendFile(path.join(__dirname, '../public/artwork.html'))
-  })
+  );
+};
