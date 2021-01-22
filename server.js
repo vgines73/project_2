@@ -3,7 +3,7 @@ const express = require('express');
 // Requiring our Routes
 const htmlRouter = require('./routes/html-routes.js');
 const artistRouter = require('./routes/artist-api-routes.js');
-// const apiRouter = require('./routes/post-api-routes.js');
+const artworkRouter = require('./routes/artwork-api-routes.js');
 
 // Sets up the Express App
 const app = express();
@@ -22,7 +22,7 @@ app.use(express.static('public'));
 // Invoke routes
 htmlRouter(app);
 artistRouter(app);
-// apiRouter(app);
+artworkRouter(app);
 
 // Syncing our sequelize models and then starting our Express app
 db.sequelize.sync({ force: true }).then(() => {
