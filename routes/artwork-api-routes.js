@@ -1,36 +1,36 @@
 const db = require('../models');
 
 module.exports = (app) => {
-  app.get('/api/artists', (req, res) => {
+  app.get('/api/artworks', (req, res) => {
     // Here we add an "include" property to our options in our findAll query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.Post
-    db.Artist.findAll({
-      include: [db.Artwork],
-    }).then((dbArtist) => res.json(dbArtist));
+    db.Artwork.findAll({
+      include: [db.Artist],
+    }).then((dbArtwork) => res.json(dbArtwork));
   });
 
-  app.get('/api/artists/:id', (req, res) => {
+  app.get('/api/artworks/:id', (req, res) => {
     // Here we add an "include" property to our options in our findOne query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.Post
-    db.Artist.findOne({
+    db.Artwork.findOne({
       where: {
         id: req.params.id,
       },
-      include: [db.Artwork],
-    }).then((dbArtist) => res.json(dbArtist));
+      include: [db.Artist],
+    }).then((dbArtwork) => res.json(dbArtwork));
   });
 
-  app.post('/api/artists', (req, res) => {
-    db.Artist.create(req.body).then((dbArtist) => res.json(dbArtist));
+  app.post('/api/artwork', (req, res) => {
+    db.Artwork.create(req.body).then((dbArtwork) => res.json(dbArtwork));
   });
 
-  app.delete('/api/artists/:id', (req, res) => {
-    db.Artist.destroy({
+  app.delete('/api/artwork/:id', (req, res) => {
+    db.Artwork.destroy({
       where: {
         id: req.params.id,
       },
-    }).then((dbArtist) => res.json(dbArtist));
+    }).then((dbArtwork) => res.json(dbArtwork));
   });
 };
