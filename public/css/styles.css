@@ -1,11 +1,13 @@
-.jumbotron {
+
+/*.jumbotron {
     background-image: linear-gradient(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.31)), url(/images/floatingPeak.jpg);
     background-size: cover;
     background-repeat: no-repeat;
     color: #EEE;
   }
+  */
   .jumbotron .container {
-    height: 600px;
+    height: 300px;
   }
   
   .inline-header {
