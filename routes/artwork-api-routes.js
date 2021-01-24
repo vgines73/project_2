@@ -22,11 +22,11 @@ module.exports = (app) => {
     }).then((dbArtwork) => res.json(dbArtwork));
   });
 
-  app.post('/api/artwork', (req, res) => {
+  app.post('/api/artworks', (req, res) => {
     db.Artwork.create(req.body).then((dbArtwork) => res.json(dbArtwork));
   });
 
-  app.delete('/api/artwork/:id', (req, res) => {
+  app.delete('/api/artworks/:id', (req, res) => {
     db.Artwork.destroy({
       where: {
         id: req.params.id,

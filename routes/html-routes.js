@@ -18,4 +18,8 @@ module.exports = (app) => {
   app.get('/artwork', (req, res) => 
       res.sendFile(path.join(__dirname, '../public/artwork.html'))
   );
+  
+  app.get('/create', (req, res) => 
+  res.sendFile(path.join(__dirname, '../public/artwork.html'))
+  );
 };
