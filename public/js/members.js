@@ -114,7 +114,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
   
       let formattedDate = new Date(artwork.createdAt);
       formattedDate = moment(formattedDate).format('MMMM Do YYYY, h:mm:ss a');
-      newPostDate.textContent = ` (${formattedDate})`;
+      newArtworkDate.textContent = ` (${formattedDate})`;
   
       newArtworkTitle.appendChild(newArtworkDate);
       newArtworkCardHeading.appendChild(deleteBtn);
