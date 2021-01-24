@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
   
     // Event handler for when a user submits an artwork
     const submitArtwork = (artwork) => {
+        console.log(artwork)
       fetch('/api/artworks', {
         method: 'POST',
         headers: {
@@ -99,8 +100,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log('Success in submitting post:', data);
-        //   window.location.href = './members.html';
+          console.log('Success in submitting artwork:', data);
+            window.location.href = './members.html';
         })
         .catch((error) => {
           console.error('Error:', error);
@@ -117,8 +118,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
         body: JSON.stringify(artwork),
       })
         .then(() => {
-          console.log('Attempting update to artwork');
-        //   window.location.href = './members.html';
+            console.log('Attempting update to artwork');
+            window.location.href = './members.html';
         })
         .catch((error) => {
           console.error('Error:', error);

@@ -105,14 +105,14 @@ document.addEventListener('DOMContentLoaded', (e) => {
       // New Post
       const newArtworkBody = document.createElement('p');
       newArtworkTitle.textContent = artwork.title;
-      newArtworkPostedBy.textContent = artwork.postedBy;
-      newArtworkYear.textContent = artwork.year;
+    //   newArtworkPostedBy.textContent = artwork.postedBy;
+    //   newArtworkYear.textContent = artwork.year;
       newArtworkBody.textContent = artwork.body;
       newArtworkCategory.textContent = artwork.category;
-      newArtworkCondition.textContent = artwork.condition;
-      newArtworkImage.textContent = artwork.image;
+    //   newArtworkCondition.textContent = artwork.condition;
+    //   newArtworkImage.textContent = artwork.image;
   
-      let formattedDate = new Date(post.createdAt);
+      let formattedDate = new Date(artwork.createdAt);
       formattedDate = moment(formattedDate).format('MMMM Do YYYY, h:mm:ss a');
       newPostDate.textContent = ` (${formattedDate})`;
   
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
       messageH2.style.textAlign = 'center';
       messageH2.style.marginTop = '50px';
       messageH2.innerHTML = `No posts yet for this category. <br>Click <a href="/create">here</a> to make a new post.`;
-      blogContainer.appendChild(messageH2);
+      artworkInfo.appendChild(messageH2);
     };
   
     const handleCategoryChange = (e) => {
@@ -159,6 +159,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
       console.log('handleCategoryChange -> newArtworkCategory', newArtworkCategory);
       getPosts(newArtworkCategory.toLowerCase());
     };
-    categoryInput.addEventListener('change', handleCategoryChange);
+    artworkInfo.addEventListener('change', handleCategoryChange);
   });
   
