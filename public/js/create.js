@@ -4,12 +4,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
   
     // Check for query string and set flag, "updating", to false initially
     const url = window.location.search;
-    let postId;
+    let artworkId;
     let updating = false;
   
     // Get a specific post
-    const getPostData = (id) => {
-      fetch(`/api/posts/${id}`, {
+    const getArtworkData = (id) => {
+      fetch(`/artwork/${id}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -18,12 +18,16 @@ document.addEventListener('DOMContentLoaded', (e) => {
         .then((response) => response.json())
         .then((data) => {
           if (data) {
-            console.log(`Success in grabbing post ${id}`, data);
+            console.log(`Success in grabbing artwork ${id}`, data);
   
             // Populate the form with the existing post
             titleInput.value = data.title;
+            postedByInput.value = data.postedBy;
+            yearInput.value = data.year;
             bodyInput.value = data.body;
-            postCategorySelect.value = data.category;
+            categoryInput.value = data.category;
+            conditionInput.value = data.condition;
+            imageInput.value = data.image;
   
             updating = true;
           }
@@ -34,49 +38,59 @@ document.addEventListener('DOMContentLoaded', (e) => {
     };
   
     // Extract the post ID from the URL
-    if (url.indexOf('?post_id=') !== -1) {
-      postId = url.split('=')[1];
-      getPostData(postId);
+    if (url.indexOf('?artwork_id=') !== -1) {
+      artworkId = url.split('=')[1];
+      getArtworkData(artworkId);
     }
   
     // Get elements from the page
-    const bodyInput = document.getElementById('body');
+    const createArt = document.getElementById('create-art');
     const titleInput = document.getElementById('title');
-    const cmsForm = document.getElementById('cms');
-    const postCategorySelect = document.getElementById('category');
+    const postedByInput = document.getElementById('posted-by');
+    const yearInput = document.getElementById('year');
+    const bodyInput = document.getElementById('body');
+    const categoryInput = document.getElementById('category');
+    const conditionInput = document.getElementById('condition');
+    const imageInput = document.getElementById('image')
+   
   
     // Set default value for the category
-    postCategorySelect.value = 'Personal';
+    categoryInput.value = 'Painting';
   
     const handleFormSubmit = (e) => {
       e.preventDefault();
-      if (!titleInput.value || !bodyInput.value) {
+      if (!titleInput.value || !bodyInput.value || !postedByInput.value || !yearInput.value || !categoryInput.value || !conditionInput.value || !imageInput.value) {
         alert('Your post is missing some content');
       }
   
-      // Create a newPost object to send off to the backend
-      const newPost = {
+      // Create a newArtwork object to send off to the backend
+      const newArtwork = {
         title: titleInput.value.trim(),
+        postedBy: postedByInput.value,
+        year: yearInput.value.trim(),
         body: bodyInput.value.trim(),
-        category: postCategorySelect.value,
+        category: categoryInput.value,
+        condtion: conditionInput.value,
+        image: imageInput.value,
+
       };
-      console.log('handleFormSubmit -> newPost', newPost);
+      console.log('handleFormSubmit -> newArtwork', newArtwork);
   
-      // Check if the user is updating or creating and preform said function
+      // Check if the user is updating or creating and perform said function
       if (updating) {
-        newPost.id = postId;
-        updatePost(newPost);
+        newArtwork.id = artworkId;
+        updateArtwork(newArtwork);
       } else {
-        submitPost(newPost);
+        submitArtwork(newArtwork);
       }
     };
   
-    // Event listener for when the blog is submitted
-    cmsForm.addEventListener('submit', handleFormSubmit);
+    // Event listener for when the artwork is submitted
+    createArt.addEventListener('submit', handleFormSubmit);
   
-    // Event handler for when a user submits a post
-    const submitPost = (post) => {
-      fetch('/api/posts', {
+    // Event handler for when a user submits an artwork
+    const submitArtwork = (post) => {
+      fetch('/api/artworks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -86,16 +100,16 @@ document.addEventListener('DOMContentLoaded', (e) => {
         .then((response) => response.json())
         .then((data) => {
           console.log('Success in submitting post:', data);
-          window.location.href = '/blog';
+          window.location.href = './artwork.html';
         })
         .catch((error) => {
           console.error('Error:', error);
         });
     };
   
-    // Update a post and bring user to /blog
-    const updatePost = (post) => {
-      fetch('/api/posts', {
+    // Update a post and bring user to /artwork
+    const updateArtwork = (post) => {
+      fetch('/api/artworks', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -103,8 +117,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
         body: JSON.stringify(post),
       })
         .then(() => {
-          console.log('Attempting update to post');
-          window.location.href = '/blog';
+          console.log('Attempting update to artwork');
+          window.location.href = './artwork.html';
         })
         .catch((error) => {
           console.error('Error:', error);

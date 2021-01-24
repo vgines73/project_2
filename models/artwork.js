@@ -10,9 +10,9 @@ module.exports = (sequelize, DataTypes) => {
       postedBy: { // link to artist page
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          isUrl: true,
-        },
+        // validate: {
+        //   isUrl: true, // should we remove url and just let the user input their name?
+        // },
       },
       year: {
         type: DataTypes.STRING,
@@ -30,19 +30,13 @@ module.exports = (sequelize, DataTypes) => {
       },
       category: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [3],
-        },
+        defaultValue: 'Painting',
       },
       condition: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1],
-        },
+        defaultValue: 'Excellent',
       },
-      images: {
+      image: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
