@@ -23,6 +23,7 @@ module.exports = (app) => {
   });
 
   app.post('/api/artworks', (req, res) => {
+        console.log(req.body)
     db.Artwork.create(req.body).then((dbArtwork) => res.json(dbArtwork));
   });
 

@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     let artworkId;
     let updating = false;
   
-    // Get a specific post
+    // Get a specific artwork
     const getArtworkData = (id) => {
       fetch(`/artwork/${id}`, {
         method: 'GET',
@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
           if (data) {
             console.log(`Success in grabbing artwork ${id}`, data);
   
-            // Populate the form with the existing post
+            // Populate the form with the existing artwork
             titleInput.value = data.title;
             postedByInput.value = data.postedBy;
             yearInput.value = data.year;
@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         });
     };
   
-    // Extract the post ID from the URL
+    // Extract the artwork ID from the URL
     if (url.indexOf('?artwork_id=') !== -1) {
       artworkId = url.split('=')[1];
       getArtworkData(artworkId);
@@ -89,18 +89,19 @@ document.addEventListener('DOMContentLoaded', (e) => {
     createArt.addEventListener('submit', handleFormSubmit);
   
     // Event handler for when a user submits an artwork
-    const submitArtwork = (post) => {
+    const submitArtwork = (artwork) => {
+        console.log(artwork)
       fetch('/api/artworks', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(post),
+        body: JSON.stringify(artwork),
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log('Success in submitting post:', data);
-          window.location.href = './artwork.html';
+          console.log('Success in submitting artwork:', data);
+            window.location.href = './members.html';
         })
         .catch((error) => {
           console.error('Error:', error);
@@ -108,17 +109,17 @@ document.addEventListener('DOMContentLoaded', (e) => {
     };
   
     // Update a post and bring user to /artwork
-    const updateArtwork = (post) => {
+    const updateArtwork = (artwork) => {
       fetch('/api/artworks', {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(post),
+        body: JSON.stringify(artwork),
       })
         .then(() => {
-          console.log('Attempting update to artwork');
-          window.location.href = './artwork.html';
+            console.log('Attempting update to artwork');
+            window.location.href = './members.html';
         })
         .catch((error) => {
           console.error('Error:', error);
