@@ -1,158 +1,140 @@
 // Wait for the DOM to completely load before we run our JS
 document.addEventListener('DOMContentLoaded', (e) => {
     if (e) {
-      console.log('DOM loaded! 🚀');
+        console.log('DOM loaded! 🚀');
     }
   
     const artworkInfo = document.querySelector('.artwork-info');
-    const createArt = document.getElementById('create-art');
-    const titleInput = document.getElementById('title');
-    const postedByInput = document.getElementById('posted-by');
-    const yearInput = document.getElementById('year');
-    const bodyInput = document.getElementById('body');
-    const categoryInput = document.getElementById('category');
-    const conditionInput = document.getElementById('condition');
-    const imageInput = document.getElementById('image')
-  
+    const artworkImage = document.querySelector('.image')
     let artworks;
   
     // Function to grab posts from the database
     const getArtwork = (category) => {
       let categoryString = category || '';
       if (categoryString) {
-        categoryString = categoryString.replace(' ', '');
-        categoryString = `category/${categoryString}`;
-      }
+            categoryString = categoryString.replace(' ', '');
+            categoryString = `category/${categoryString}`;
+        }
   
       fetch(`/api/artworks/${categoryString}`, {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
         },
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log('Success in getting artworks:', data);
-          artworks = data;
-  
-          if (!artworks.length) {
-            displayEmpty();
-          } else {
+            console.log('Success in getting artworks:', data);
+            artworks = data;
             initializeRows();
-          }
         })
         .catch((error) => console.error('Error:', error));
     };
   
     // Function to make DELETE request for an artwork
-    const deleteArtwork = (id) => {
-      fetch(`/api/artworks/${id}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-      }).then(() => getArtwork(categoryInput.value));
-    };
+    // const deleteArtwork = (id) => {
+    //   fetch(`/api/artworks/${id}`, {
+    //     method: 'GET',
+    //     headers: {
+    //       'Content-Type': 'application/json',
+    //     },
+    //   }).then(() => getArtwork(categoryInput.value));
+    // };
   
     // Getting inital list of artwork
     getArtwork();
   
     // Function to help construct the post HTML content inside artworkInfo
     const initializeRows = () => {
-      artworkInfo.innerHTML = '';
-      const artworksToAdd = [];
+        artworkInfo.innerHTML = '';
+        const artworksToAdd = [];
   
-      artworks.forEach((artwork) => artworksToAdd.push(createNewRow(artwork)));
-      artworksToAdd.forEach((artwork) => artworkInfo.appendChild(artwork));
+        artworks.forEach((artwork) => artworksToAdd.push(createNewRow(artwork)));
+        artworksToAdd.forEach((artwork) => artworkInfo.appendChild(artwork));
     };
   
     const createNewRow = (artwork) => {
-      // Postcard div
-      const newArtworkCard = document.createElement('div');
-      newArtworkCard.classList.add('card');
+        // Artworkcard div
+        const newArtworkCard = document.createElement('div');
+        newArtworkCard.classList.add('card');
   
-      // Heading
-      const newArtworkCardHeading = document.createElement('div');
-      newArtworkCardHeading.classList.add('card-header');
+        // Heading
+        const newArtworkCardHeading = document.createElement('div');
+        newArtworkCardHeading.classList.add('card-header');
   
-      // Delete button
-      const deleteBtn = document.createElement('button');
-      deleteBtn.textContent = 'x';
-      deleteBtn.classList.add('delete', 'btn', 'btn-danger');
-      deleteBtn.addEventListener('click', handleArtworkDelete);
+        // New artwork info
+        const newArtworkTitle = document.createElement('h5');
+        const newArtworkDate = document.createElement('p');
+
+        // New artwork posted by
+        const newArtworkPostedBy = document.createElement('p')
+        newArtworkPostedBy.textContent = artwork.postedBy;
+        
+        // New artwork year
+        const newArtworkYear  = document.createElement('p');
+        newArtworkYear.textContent = artwork.year
+
+        // New artwork category
+        const newArtworkCategory = document.createElement('p');
+        newArtworkCategory.textContent = artwork.category;
+    
+        // New artwork condition
+        const newArtworkCondition = document.createElement('p')
+        newArtworkCondition.textContent = artwork.condition;
+
+        // New artwork image
+        const newArtworkImage = document.createElement('img');
+        newArtworkImage.src = artwork.image;
+        newArtworkImage.style.width = "150px";
+        newArtworkImage.style.height = "150px";
+        console.log(artwork.image)
+
+        // New artwork card body
+        const newArtworkCardBody = document.createElement('div');
+        newArtworkCardBody.classList.add('card-body');
+
+        // New artwork
+        const newArtworkBody = document.createElement('p');
+        newArtworkImage.textContent = artwork.image;
+        newArtworkTitle.textContent = artwork.title;
+        newArtworkPostedBy.textContent = ('Posted By: ' + artwork.postedBy);
+        newArtworkYear.textContent = ('Year: ' + artwork.year);
+        newArtworkBody.textContent = ('Description: ' + artwork.body);
+        newArtworkCategory.textContent = ('Category: ' + artwork.category);
+        newArtworkCondition.textContent = ('Condition: ' + artwork.condition);
+      
   
-      // Edit button
-      const editBtn = document.createElement('button');
-      editBtn.textContent = 'EDIT';
-      editBtn.classList.add('delete', 'btn', 'btn-danger');
-      editBtn.addEventListener('click', handleArtworkEdit);
+        let formattedDate = new Date(artwork.createdAt);
+        formattedDate = moment(formattedDate).format('MMMM Do YYYY, h:mm:ss a');
+        newArtworkDate.textContent = ` (${formattedDate})`;
   
-      // New post info
-      const newArtworkTitle = document.createElement('h2');
-      const newArtworkDate = document.createElement('small');
+        newArtworkTitle.appendChild(newArtworkDate);
+        newArtworkCardHeading.appendChild(newArtworkImage);
+        newArtworkCardHeading.appendChild(newArtworkTitle);
+        newArtworkCardHeading.appendChild(newArtworkPostedBy);
+        newArtworkCardHeading.appendChild(newArtworkYear);
+        newArtworkCardHeading.appendChild(newArtworkCategory);
+        newArtworkCardHeading.appendChild(newArtworkCondition);
+        newArtworkCardBody.appendChild(newArtworkBody);
+        newArtworkCard.appendChild(newArtworkCardHeading);
+        newArtworkCard.appendChild(newArtworkCardBody);
+        newArtworkCard.setAttribute('data-artwork', JSON.stringify(artwork));
   
-      // New post category
-      const newArtworkCategory = document.createElement('h5');
-      newArtworkCategory.textContent = artwork.category;
-      newArtworkCategory.style.float = 'right';
-      newArtworkCategory.style.fontWeight = '700';
-      newArtworkCategory.style.marginTop = '-15px';
-  
-      // New post card body
-      const newArtworkCardBody = document.createElement('div');
-      newArtworkCardBody.classList.add('card-body');
-  
-      // New Post
-      const newArtworkBody = document.createElement('p');
-      newArtworkTitle.textContent = post.title;
-      newArtworkBody.textContent = post.body;
-  
-      let formattedDate = new Date(post.createdAt);
-      formattedDate = moment(formattedDate).format('MMMM Do YYYY, h:mm:ss a');
-      newPostDate.textContent = ` (${formattedDate})`;
-  
-      newArtworkTitle.appendChild(newArtworkDate);
-      newArtworkCardHeading.appendChild(deleteBtn);
-      newArtworkCardHeading.appendChild(editBtn);
-      newArtworkCardHeading.appendChild(newArtworkTitle);
-      newArtworkCardHeading.appendChild(newArtworkCategory);
-      newArtworkCardBody.appendChild(newArtworkBody);
-      newArtworkCard.appendChild(newArtworkCardHeading);
-      newArtworkCard.appendChild(newArtworkCardBody);
-      newArtworkCard.setAttribute('data-artwork', JSON.stringify(post));
-  
-      return newArtworkCard;
-    };
-  
-    const handleArtworkDelete = (e) => {
-      const currentArtwork = JSON.parse(
-        e.target.parentElement.parentElement.dataset.artwork
-      );
-      console.log('handleArtworkDelete -> currentArtwork', currentArtwork);
-      deleteArtwork(currentArtwork.id);
-    };
-  
-    const handleArtworkEdit = (e) => {
-      const currentArtwork = JSON.parse(
-        e.target.parentElement.parentElement.dataset.artwork
-      );
-      console.log('handleArtworkEdit -> currentArtwork', currentArtwork);
-      window.location.href = `/create?artwork_id=${currentArtwork.id}`;
-    };
-  
-    const displayEmpty = () => {
-      artworkInfo.innerHTML = '';
-      const messageH2 = document.createElement('h4');
-      messageH2.style.textAlign = 'center';
-      messageH2.style.marginTop = '50px';
-      messageH2.innerHTML = `No posts yet for this category. <br>Click <a href="/create">here</a> to make a new post.`;
-      blogContainer.appendChild(messageH2);
+        return newArtworkCard;
     };
   
     const handleCategoryChange = (e) => {
-      const newArtworkCategory = e.target.value;
-      console.log('handleCategoryChange -> newArtworkCategory', newArtworkCategory);
-      getPosts(newArtworkCategory.toLowerCase());
+        const newArtworkCategory = e.target.value;
+        console.log('handleCategoryChange -> newArtworkCategory', newArtworkCategory);
+        getArtwork(newArtworkCategory.toLowerCase());
     };
-    categoryInput.addEventListener('change', handleCategoryChange);
+    artworkInfo.addEventListener('change', handleCategoryChange);
+
+
+    const handleImageChange = (e) => {
+        const newArtworkImage = e.target.value;
+        console.log('handleImageChange -> newArtworkImage', newArtworkImage);
+        getArtwork(newArtworkImage.toLowerCase());
+    };
+    artworkImage.addEventListener('change', handleImageChange);
   });
