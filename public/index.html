@@ -8,17 +8,21 @@
    <title>Floating Peak</title>
 
    <!-- STYLESHEETS -->
-   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" 
          integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
-   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
-         integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-   <link rel="stylesheet" href="../public/css/styles.css">
-</head>
+   
+    <link rel="stylesheet" href="./css/styles.css">
+
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@1,600&display=swap" rel="stylesheet">
+
+
+  </head>
 
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <span class="navbar-brand mb-1 h1">Navbar</span>
+      <a class="navbar-brand h1" href="index.html">Home</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -26,104 +30,64 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="nav navbar-nav navbar-right">
           <li class="nav-item">
-            <a class="nav-link" href="#"></a>
+            <a class="nav-link" href="artist.html">Artists</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Portfolio</a>
+            <a class="nav-link" href="artwork.html">Artwork</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Contact</a>
-          </li>
-          <form class="form-inline">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        </form>
         </ul>
       </div>
-    </nav>
+  </nav>
+  
+  <div class="jumbotron">
+    <h1 class="display-4">Floating Peak</h1>
+    <p class="lead">Welcome to Floating Peak, a place where artists and creatives come together to showcase their amazing work to the world!</p>
+    <hr class="my-4">
+    <p>Ready to post your masterpiece?</p>
+    <p class="lead">
+      <a class="btn btn-primary btn-lg" href="#" role="button">Upload</a>
+    </p>
+  </div>
+  <br>
+  <hr>
+  <br>
 
-    <div class="jumbotron">
-      <div class="container">
-        <h1>floating peak</h1>
-        <p>share beautiful scenery with the world</p>
-      </div>
-    </div>
-
-    <div id="photos">
-      <script id="pic-template" type="text/x-handlebars-template">
-        <div class="container photo-post" data-photo-id="{{_id}}">
-          <div class="row">
-            <div class="col-sm-6">
-              <h3 class='title'>{{title}}</h3>
-              <p class='about'>{{about}}</p>
-              <p>Tags</p>
-              <ul class='tags-list'>{{#each tags}}<li class='tag-item' data-tag-id="{{_id}}">{{tag}}</li> {{/each}}</ul>
-              <button class='btn btn-default edit-photo'>Edit</button>
-              <button class='btn btn-success save-photo hidden'>Save Changes</button>
-              <button class='btn btn-danger delete-photo hidden' data-photo-id="{{_id}}">Delete Post</button>
-              <button type="button" class="btn btn-info cancel hidden">Cancel</button>
+  <div class="container-fluid"
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-sm-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="http://placehold.it/150x300" alt="Placeholder" class="img-thumbnail">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <div class="card" style="width: 18rem;">
+                            <img src="http://placehold.it/150x300" alt="Placeholder" class="img-thumbnail">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                the card's content.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-4">
+                    <div class="card" style="width: 18rem;">
+                            <img src="http://placehold.it/150x300" alt="Placeholder" class="img-thumbnail">
+                        <div class="card-body">
+                            <p class="card-text">Some quick example text to build on the card title and make up the bulk of
+                                the card's content.</p>
+                        </div>
+                    </div>
+                </div> 
             </div>
-          </div>
         </div>
-      </script>
     </div>
 
-    <!-- BEGIN FORM -->
-    <section id='photo-share' class="container">
-      <div class="row">
-        <div class="col-md-10 col-md-offset-1">
 
-          <form class="form-horizontal">
-            <fieldset>
-
-              <!-- Form Name -->
-              <legend>Share an Image</legend>
-
-              <!-- Text input-->
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="name">Title</label>
-                <div class="col-md-4">
-                  <input id="name" name="title" type="text" placeholder="" class="form-control input-md" required="">
-                </div>
-              </div>
-
-              <!-- Textarea -->
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="about">About Your Scene</label>
-                <div class="col-md-4">
-                  <textarea class="form-control" id="about" name="about" placeholder="Tell your story..." required=""></textarea>
-                </div>
-              </div>
-
-              <!-- Text input-->
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="url">URL</label>
-                <div class="col-md-4">
-                  <input id="url" name="url" type="text" placeholder="www.example.com/image.jpg" class="form-control input-md" required="">
-                </div>
-              </div>
-
-              <!-- Text input-->
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="tags">Tags (seperated by commas)</label>
-                <div class="col-md-4">
-                  <input id="tags" name="tags" type="text" placeholder="dreamcatcher, cleanse, tumblr" class="form-control input-md" required="">
-                </div>
-              </div>
-
-              <!-- Button -->
-              <div class="form-group">
-                <label class="col-md-4 control-label" for="singlebutton"></label>
-                <div class="col-md-4">
-                  <button id="singlebutton" name="singlebutton" class="btn btn-primary">Save</button>
-                  <button onclick="location.href = 'https://youtu.be/dQw4w9WgXcQ';" class='btn btn-danger'>¯\_(ツ)_/¯</button>
-                </div>
-              </div>
-            </fieldset>
-          </form>
-        </div>
-      </div>
-    </section>
-    <!-- END FORM -->
+    
 
    <!-- VENDOR SCRIPTS -->
    <script src="https://code.jquery.com/jquery-2.2.3.js" integrity="sha256-laXWtGydpwqJ8JA+X9x2miwmaiKhn8tVmOVEigRNtP4=" crossorigin="anonymous"></script>
@@ -133,6 +97,6 @@
     <script src="./js/app.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" 
          integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-  </body>
-
+  
+</body>
 </html>

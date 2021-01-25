@@ -1,11 +1,12 @@
 
-/*.jumbotron {
+.jumbotron {
+    font-family: 'Poppins', sans-serif;
     background-image: linear-gradient(rgba(0, 0, 0, 0.20), rgba(0, 0, 0, 0.31)), url(/images/floatingPeak.jpg);
     background-size: cover;
     background-repeat: no-repeat;
-    color: #EEE;
+    color: rgba(199, 84, 7, 0.904);
   }
-  */
+  
   .jumbotron .container {
     height: 300px;
   }
