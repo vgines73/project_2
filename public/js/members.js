@@ -111,8 +111,9 @@ document.addEventListener('DOMContentLoaded', (e) => {
       newArtworkCondition.textContent = artwork.condition;
 
       // New artwork image
-    //   const newArtworkImage = document.createElement('img')
-    //   newArtworkImage.textContent = artwork.image;
+      const newArtworkImage = document.createElement('img');
+      newArtworkImage.src = artwork.image;
+      console.log(artwork.image)
 
 
       // New artwork card body
@@ -128,7 +129,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
       newArtworkBody.textContent = artwork.body;
       newArtworkCategory.textContent = artwork.category;
       newArtworkCondition.textContent = artwork.condition;
-    //   newArtworkImage.textContent = artwork.image;
+      newArtworkImage.textContent = artwork.image;
   
       let formattedDate = new Date(artwork.createdAt);
       formattedDate = moment(formattedDate).format('MMMM Do YYYY, h:mm:ss a');
@@ -142,7 +143,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
       newArtworkCardHeading.appendChild(newArtworkYear);
       newArtworkCardHeading.appendChild(newArtworkCategory);
       newArtworkCardHeading.appendChild(newArtworkCondition);
-    //   newArtworkImage.appendChild(newArtworkImage);
+      newArtworkCardHeading.appendChild(newArtworkImage);
       newArtworkCardBody.appendChild(newArtworkBody);
       newArtworkCard.appendChild(newArtworkCardHeading);
       newArtworkCard.appendChild(newArtworkCardBody);
