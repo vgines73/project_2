@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         .then((response) => response.json())
         .then((data) => {
           console.log('Success in submitting artwork:', data);
-            window.location.href = './members.html';
+          window.location.href = './members.html';
         })
         .catch((error) => {
           console.error('Error:', error);
