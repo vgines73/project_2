@@ -129,11 +129,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
       const newArtworkBody = document.createElement('p');
       newArtworkImage.textContent = artwork.image;
       newArtworkTitle.textContent = artwork.title;
-      newArtworkPostedBy.textContent = artwork.postedBy;
-      newArtworkYear.textContent = artwork.year;
-      newArtworkBody.textContent = artwork.body;
-      newArtworkCategory.textContent = artwork.category;
-      newArtworkCondition.textContent = artwork.condition;
+      newArtworkPostedBy.textContent = ('Posted By: ' + artwork.postedBy);
+      newArtworkYear.textContent = ('Year: ' + artwork.year);
+      newArtworkBody.textContent = ('Description: ' + artwork.body);
+      newArtworkCategory.textContent = ('Category: ' + artwork.category);
+      newArtworkCondition.textContent = ('Condition: ' + artwork.condition);
       
   
       let formattedDate = new Date(artwork.createdAt);
