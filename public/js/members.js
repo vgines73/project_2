@@ -115,6 +115,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
       // New artwork image
       const newArtworkImage = document.createElement('img');
       newArtworkImage.src = artwork.image;
+      newArtworkImage.style.width = "150px";
+      newArtworkImage.style.height = "150px";
       console.log(artwork.image)
 
 
