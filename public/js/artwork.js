@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
       const currentArtwork = JSON.parse(
         e.target.parentElement.parentElement.dataset.artwork
       );
-      console.log('handleArtworkDelete -> currentArtwork', currentArtwork);
+      console.log('handleArtworkEdit -> currentArtwork', currentArtwork);
       window.location.href = `/create?artwork_id=${currentArtwork.id}`;
     };
   
