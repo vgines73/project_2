@@ -87,29 +87,44 @@ document.addEventListener('DOMContentLoaded', (e) => {
       editBtn.classList.add('delete', 'btn', 'btn-danger');
       editBtn.addEventListener('click', handleArtworkEdit);
   
-      // New post info
-      const newArtworkTitle = document.createElement('h2');
-      const newArtworkDate = document.createElement('small');
-  
-      // New post category
-      const newArtworkCategory = document.createElement('h5');
+      // New artwork info
+      const newArtworkTitle = document.createElement('h5');
+      const newArtworkDate = document.createElement('p');
+
+      // New artwork posted by
+      const newArtworkPostedBy = document.createElement('p')
+      newArtworkPostedBy.textContent = artwork.postedBy;
+        
+      // New artwork year
+      const newArtworkYear  = document.createElement('p');
+      newArtworkYear.textContent = artwork.year
+
+      // New artwork category
+      const newArtworkCategory = document.createElement('p');
       newArtworkCategory.textContent = artwork.category;
-      newArtworkCategory.style.float = 'right';
-      newArtworkCategory.style.fontWeight = '700';
-      newArtworkCategory.style.marginTop = '-15px';
-  
-      // New post card body
+    
+      // New artwork condition
+      const newArtworkCondition = document.createElement('p')
+      newArtworkCondition.textContent = artwork.condition;
+
+      // New artwork image
+    //   const newArtworkImage = document.createElement('img')
+    //   newArtworkImage.textContent = artwork.image;
+
+
+      // New artwork card body
       const newArtworkCardBody = document.createElement('div');
       newArtworkCardBody.classList.add('card-body');
-  
-      // New Post
+
+
+      // New artwork
       const newArtworkBody = document.createElement('p');
       newArtworkTitle.textContent = artwork.title;
-    //   newArtworkPostedBy.textContent = artwork.postedBy;
-    //   newArtworkYear.textContent = artwork.year;
+      newArtworkPostedBy.textContent = artwork.postedBy;
+      newArtworkYear.textContent = artwork.year;
       newArtworkBody.textContent = artwork.body;
       newArtworkCategory.textContent = artwork.category;
-    //   newArtworkCondition.textContent = artwork.condition;
+      newArtworkCondition.textContent = artwork.condition;
     //   newArtworkImage.textContent = artwork.image;
   
       let formattedDate = new Date(artwork.createdAt);
@@ -120,7 +135,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
       newArtworkCardHeading.appendChild(deleteBtn);
       newArtworkCardHeading.appendChild(editBtn);
       newArtworkCardHeading.appendChild(newArtworkTitle);
+      newArtworkCardHeading.appendChild(newArtworkPostedBy);
+      newArtworkCardHeading.appendChild(newArtworkYear);
       newArtworkCardHeading.appendChild(newArtworkCategory);
+      newArtworkCardHeading.appendChild(newArtworkCondition);
+    //   newArtworkImage.appendChild(newArtworkImage);
       newArtworkCardBody.appendChild(newArtworkBody);
       newArtworkCard.appendChild(newArtworkCardHeading);
       newArtworkCard.appendChild(newArtworkCardBody);
