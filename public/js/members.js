@@ -35,11 +35,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
           console.log('Success in getting artworks:', data);
           artworks = data;
   
-          if (!artworks.length) {
-            displayEmpty();
-          } else {
+        //   if (!artworks.length) {
+        //     displayEmpty();
+        //   } else {
             initializeRows();
-          }
+        //   }
         })
         .catch((error) => console.error('Error:', error));
     };
@@ -51,7 +51,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
         headers: {
           'Content-Type': 'application/json',
         },
-      }).then(() => getArtwork(titleInput.value, postedByInput.value, yearInput.value, bodyInput.value, categoryInput.value, conditionInput.value, imageInput.value));
+      }).then(() => {
+          console.log(artworks.id)
+          getArtwork(artworks.id);
+      })
     };
   
     // Getting inital list of artwork
@@ -164,14 +167,14 @@ document.addEventListener('DOMContentLoaded', (e) => {
       window.location.href = `/create?artwork_id=${currentArtwork.id}`;
     };
   
-    const displayEmpty = () => {
-      artworkInfo.innerHTML = '';
-      const messageH2 = document.createElement('h4');
-      messageH2.style.textAlign = 'center';
-      messageH2.style.marginTop = '50px';
-      messageH2.innerHTML = `No posts yet for this category. <br>Click <a href="/create">here</a> to make a new post.`;
-      artworkInfo.appendChild(messageH2);
-    };
+    // const displayEmpty = () => {
+    //   artworkInfo.innerHTML = '';
+    //   const messageH2 = document.createElement('h4');
+    //   messageH2.style.textAlign = 'center';
+    //   messageH2.style.marginTop = '50px';
+    //   messageH2.innerHTML = `No Artwork has been posted on your page. <br>Click <a href="./create">here</a> to add artwork.`;
+    //   artworkInfo.appendChild(messageH2);
+    // };
   
     const handleCategoryChange = (e) => {
       const newArtworkCategory = e.target.value;
