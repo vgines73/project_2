@@ -31,16 +31,6 @@ document.addEventListener('DOMContentLoaded', (e) => {
         .catch((error) => console.error('Error:', error));
     };
   
-    // Function to make DELETE request for an artwork
-    // const deleteArtwork = (id) => {
-    //   fetch(`/api/artworks/${id}`, {
-    //     method: 'GET',
-    //     headers: {
-    //       'Content-Type': 'application/json',
-    //     },
-    //   }).then(() => getArtwork(categoryInput.value));
-    // };
-  
     // Getting inital list of artwork
     getArtwork();
   
@@ -105,7 +95,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
       
   
         let formattedDate = new Date(artwork.createdAt);
-        formattedDate = moment(formattedDate).format('MMMM Do YYYY, h:mm:ss a');
+        formattedDate = moment(formattedDate).format('MMMM Do YYYY');
         newArtworkDate.textContent = ` (${formattedDate})`;
   
         newArtworkTitle.appendChild(newArtworkDate);
