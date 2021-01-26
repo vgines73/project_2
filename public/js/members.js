@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
             categoryString = `category/${categoryString}`;
         }
   
-      fetch(`/api/artworks/${categoryString}`, {
+        fetch(`/api/artworks/${categoryString}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -32,7 +32,17 @@ document.addEventListener('DOMContentLoaded', (e) => {
         })
         .catch((error) => console.error('Error:', error));
     };
-  
+    const updateArtwork = (id) => {
+        fetch(`/api/artworks/${id}`, {
+            method: 'UPDATE',
+            headers: {
+            'Content-Type': 'application/json',
+        },
+        }).then(() => {
+            console.log(artworks.id)
+            getArtwork(artworks.id);
+        })
+    };
     // Function to make DELETE request for an artwork
     const deleteArtwork = (id) => {
         fetch(`/api/artworks/${id}`, {
@@ -45,7 +55,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
             getArtwork(artworks.id);
         })
     };
-  
+
     // Getting inital list of artwork
     getArtwork();
   
@@ -159,24 +169,25 @@ document.addEventListener('DOMContentLoaded', (e) => {
     
     // edit artwork by id
     const handleArtworkEdit = (e) => {
-      const currentArtwork = JSON.parse(
-        e.target.parentElement.parentElement.dataset.artwork
-      );
-      console.log('handleArtworkEdit -> currentArtwork', currentArtwork);
-      window.location.href = `/create?artwork_id=${currentArtwork.id}`;
+        const currentArtwork = JSON.parse(
+            e.target.parentElement.parentElement.dataset.artwork
+        );
+        console.log('handleArtworkEdit -> currentArtwork', currentArtwork);
+        window.location.href = `/create?artwork_id=${currentArtwork.id}`;
+        updateArtwork(currentArtwork.id);
     };
   
     const handleCategoryChange = (e) => {
-      const newArtworkCategory = e.target.value;
-      console.log('handleCategoryChange -> newArtworkCategory', newArtworkCategory);
-      getArtwork(newArtworkCategory.toLowerCase());
+        const newArtworkCategory = e.target.value;
+        console.log('handleCategoryChange -> newArtworkCategory', newArtworkCategory);
+        getArtwork(newArtworkCategory.toLowerCase());
     };
     artworkInfo.addEventListener('change', handleCategoryChange);
 
 
   // add artwork button
   document.getElementById('addArtworkButton').onclick = () => {
-      location.href = './create.html';
+        location.href = './create.html';
     };
 });
   

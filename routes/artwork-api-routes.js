@@ -34,4 +34,5 @@ module.exports = (app) => {
       },
     }).then((dbArtwork) => res.json(dbArtwork));
   });
+
 };
