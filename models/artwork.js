@@ -10,9 +10,9 @@ module.exports = (sequelize, DataTypes) => {
       postedBy: { // link to artist page
         type: DataTypes.STRING,
         allowNull: false,
-        validate: {
-          isUrl: true,
-        },
+        // validate: {
+        //   isUrl: true, // should we remove url and just let the user input their name?
+        // },
       },
       year: {
         type: DataTypes.STRING,
@@ -30,19 +30,13 @@ module.exports = (sequelize, DataTypes) => {
       },
       category: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [3],
-        },
+        defaultValue: 'Painting',
       },
       condition: {
         type: DataTypes.STRING,
-        allowNull: false,
-        validate: {
-          len: [1],
-        },
+        defaultValue: 'Excellent',
       },
-      images: {
+      image: {
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -53,7 +47,7 @@ module.exports = (sequelize, DataTypes) => {
   
     Artwork.associate = (models) => {
       // We're saying that Artwork should belong to an Artist
-      // Artwork can't be created without an Author due to the foreign key constraint
+      // Artwork can't be created without an Artit due to the foreign key constraint
       Artwork.belongsTo(models.Artist, {
         foreignKey: {
           allowNull: false,
