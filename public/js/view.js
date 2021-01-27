@@ -51,14 +51,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         // Heading
         const newArtworkCardHeading = document.createElement('div');
         newArtworkCardHeading.classList.add('card-header');
-  
-        // // view button
-        // const viewBtn = document.createElement('button');
-        // viewBtn.textContent = 'VIEW';
-        // viewBtn.classList.add('btn', 'btn-primary', 'view-button');
-        // viewBtn.style.float = "right";
-        // viewBtn.addEventListener('click', handleArtworkView);
-        
+     
         // New artwork info
         const newArtworkTitle = document.createElement('h5');
         const newArtworkDate = document.createElement('p');
@@ -129,12 +122,5 @@ document.addEventListener('DOMContentLoaded', (e) => {
         viewArtwork(currentArtwork.id);
     };
     artworkInfo.addEventListener('view', handleArtworkView);
-
-    // const handleCategoryChange = (e) => {
-    //     const newArtworkCategory = e.target.value;
-    //     console.log('handleCategoryChange -> newArtworkCategory', newArtworkCategory);
-    //     getArtwork(newArtworkCategory.toLowerCase());
-    // };
-    // artworkInfo.addEventListener('change', handleCategoryChange);
 
 });
