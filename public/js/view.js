@@ -9,14 +9,14 @@ document.addEventListener('DOMContentLoaded', (e) => {
     let artworks;
   
     // Function to grab artworks from the database
-    const getArtwork = (category) => {
-      let categoryString = category || '';
-      if (categoryString) {
-            categoryString = categoryString.replace(' ', '');
-            categoryString = `category/${categoryString}`;
-        }
+    const getArtwork = (id) => {
+    //   let categoryString = id || '';
+    //   if (categoryString) {
+    //         categoryString = categoryString.replace(' ', '');
+    //         categoryString = `category/${categoryString}`;
+    //     }
   
-      fetch(`/api/artworks/${categoryString}`, {
+      fetch(`/api/artworks/${id}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -35,15 +35,15 @@ document.addEventListener('DOMContentLoaded', (e) => {
     getArtwork();
   
     // Function to help construct the post HTML content inside artworkInfo
-    const initializeRows = () => {
+    const initializeRows = (artwork) => {
         artworkInfo.innerHTML = '';
         const artworksToAdd = [];
   
-        artworks.forEach((artwork) => artworksToAdd.push(createNewRow(artwork)));
-        artworksToAdd.forEach((artwork) => artworkInfo.appendChild(artwork));
+        artworksToAdd.push(createRow(artwork));
+        artworkInfo.appendChild(artwork);
     };
   
-    const createNewRow = (artwork) => {
+    const createRow = (artwork) => {
         // Artworkcard div
         const newArtworkCard = document.createElement('div');
         newArtworkCard.classList.add('card', 'col-md-12');
