@@ -52,6 +52,13 @@ document.addEventListener('DOMContentLoaded', (e) => {
         const newArtworkCardHeading = document.createElement('div');
         newArtworkCardHeading.classList.add('card-header');
   
+        // Edit button
+        const viewBtn = document.createElement('button');
+        viewBtn.textContent = 'VIEW';
+        viewBtn.classList.add('btn', 'btn-primary', 'view-button');
+        viewBtn.style.float = "right";
+        viewBtn.addEventListener('click', handleArtworkView);
+        
         // New artwork info
         const newArtworkTitle = document.createElement('h5');
         const newArtworkDate = document.createElement('p');
@@ -99,6 +106,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         newArtworkDate.textContent = ` (${formattedDate})`;
   
         newArtworkTitle.appendChild(newArtworkDate);
+        newArtworkCardHeading.appendChild(viewBtn)
         newArtworkCardHeading.appendChild(newArtworkImage);
         newArtworkCardHeading.appendChild(newArtworkTitle);
         newArtworkCardHeading.appendChild(newArtworkPostedBy);
@@ -112,7 +120,15 @@ document.addEventListener('DOMContentLoaded', (e) => {
   
         return newArtworkCard;
     };
-  
+    const handleArtworkView = (e) => {
+        const currentArtwork = JSON.parse(
+            e.target.parentElement.parentElement.dataset.artwork
+        );
+        console.log('handleArtworkEdit -> currentArtwork', currentArtwork);
+        window.location.href = `/view?artwork_id=${currentArtwork.id}`;
+        viewArtwork(currentArtwork.id);
+    };
+
     const handleCategoryChange = (e) => {
         const newArtworkCategory = e.target.value;
         console.log('handleCategoryChange -> newArtworkCategory', newArtworkCategory);
@@ -120,4 +136,4 @@ document.addEventListener('DOMContentLoaded', (e) => {
     };
     artworkInfo.addEventListener('change', handleCategoryChange);
 
-  });
+});

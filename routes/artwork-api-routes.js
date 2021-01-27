@@ -62,5 +62,7 @@ module.exports = (app) => {
         console.log(dbArtwork);
         res.json(dbArtwork)
     });
+
+
   });
 };
