@@ -32,17 +32,18 @@ document.addEventListener('DOMContentLoaded', (e) => {
         })
         .catch((error) => console.error('Error:', error));
     };
-    const updateArtwork = (id) => {
-        fetch(`/api/artworks/${id}`, {
-            method: 'UPDATE',
-            headers: {
+
+    const updateArtwork = (artwork) => {
+        console.log('attempting to update', artwork);
+        fetch('/api/artworks', {
+          method: 'PUT',
+          headers: {
             'Content-Type': 'application/json',
-        },
-        }).then(() => {
-            console.log(artworks.id)
-            getArtwork(artworks.id);
-        })
+          },
+          body: JSON.stringify(artwork),
+        }).then((response) => console.log(response));
     };
+
     // Function to make DELETE request for an artwork
     const deleteArtwork = (id) => {
         fetch(`/api/artworks/${id}`, {

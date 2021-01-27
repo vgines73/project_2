@@ -8,7 +8,7 @@ module.exports = (sequelize, DataTypes) => {
               len: [1],
           }
       },
-      screenName: {
+      body: { // little brief bio of the artist
         type: DataTypes.STRING,
         allowNull: false,
         validate: {

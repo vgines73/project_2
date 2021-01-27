@@ -35,4 +35,26 @@ module.exports = (app) => {
     }).then((dbArtwork) => res.json(dbArtwork));
   });
 
+
+  app.put('api/artworks/', (req, res) => {
+    db.Artwork.update(
+        {
+        title: req.body.title,
+        postedBy: req.body.postedBy,
+        year: req.body.year,
+        body: req.body.body,
+        category: req.body.category,
+        condition: req.body.condition,
+        image: req.body.image,
+        },
+        {
+            where: {
+                id: req.body.id,
+            },
+        }
+    )
+    console.log(dbArtwork)
+    .then((dbArtwork) => res.json(dbArtwork));
+ 
+  });
 };
