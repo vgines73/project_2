@@ -46,18 +46,18 @@ document.addEventListener('DOMContentLoaded', (e) => {
     const createNewRow = (artwork) => {
         // Artworkcard div
         const newArtworkCard = document.createElement('div');
-        newArtworkCard.classList.add('card');
+        newArtworkCard.classList.add('card', 'col-md-12');
   
         // Heading
         const newArtworkCardHeading = document.createElement('div');
         newArtworkCardHeading.classList.add('card-header');
   
-        // view button
-        const viewBtn = document.createElement('button');
-        viewBtn.textContent = 'VIEW';
-        viewBtn.classList.add('btn', 'btn-primary', 'view-button');
-        viewBtn.style.float = "right";
-        viewBtn.addEventListener('click', handleArtworkView);
+        // // view button
+        // const viewBtn = document.createElement('button');
+        // viewBtn.textContent = 'VIEW';
+        // viewBtn.classList.add('btn', 'btn-primary', 'view-button');
+        // viewBtn.style.float = "right";
+        // viewBtn.addEventListener('click', handleArtworkView);
         
         // New artwork info
         const newArtworkTitle = document.createElement('h5');
@@ -82,8 +82,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
         // New artwork image
         const newArtworkImage = document.createElement('img');
         newArtworkImage.src = artwork.image;
-        newArtworkImage.style.width = "150px";
-        newArtworkImage.style.height = "150px";
+        // set image width to 100% to make image responsive
+        newArtworkImage.style.width = '100%';
         console.log(artwork.image)
 
         // New artwork card body
@@ -106,7 +106,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         newArtworkDate.textContent = ` (${formattedDate})`;
   
         newArtworkTitle.appendChild(newArtworkDate);
-        newArtworkCardHeading.appendChild(viewBtn)
+
         newArtworkCardHeading.appendChild(newArtworkImage);
         newArtworkCardHeading.appendChild(newArtworkTitle);
         newArtworkCardHeading.appendChild(newArtworkPostedBy);
@@ -130,11 +130,11 @@ document.addEventListener('DOMContentLoaded', (e) => {
     };
     artworkInfo.addEventListener('view', handleArtworkView);
 
-    const handleCategoryChange = (e) => {
-        const newArtworkCategory = e.target.value;
-        console.log('handleCategoryChange -> newArtworkCategory', newArtworkCategory);
-        getArtwork(newArtworkCategory.toLowerCase());
-    };
-    artworkInfo.addEventListener('change', handleCategoryChange);
+    // const handleCategoryChange = (e) => {
+    //     const newArtworkCategory = e.target.value;
+    //     console.log('handleCategoryChange -> newArtworkCategory', newArtworkCategory);
+    //     getArtwork(newArtworkCategory.toLowerCase());
+    // };
+    // artworkInfo.addEventListener('change', handleCategoryChange);
 
 });
