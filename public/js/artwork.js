@@ -5,10 +5,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
     }
   
     const artworkInfo = document.querySelector('.artwork-info');
-    const artworkImage = document.querySelector('.image')
+
     let artworks;
   
-    // Function to grab posts from the database
+    // Function to grab artworks from the database
     const getArtwork = (category) => {
       let categoryString = category || '';
       if (categoryString) {
@@ -120,11 +120,4 @@ document.addEventListener('DOMContentLoaded', (e) => {
     };
     artworkInfo.addEventListener('change', handleCategoryChange);
 
-
-    const handleImageChange = (e) => {
-        const newArtworkImage = e.target.value;
-        console.log('handleImageChange -> newArtworkImage', newArtworkImage);
-        getArtwork(newArtworkImage.toLowerCase());
-    };
-    artworkImage.addEventListener('change', handleImageChange);
   });

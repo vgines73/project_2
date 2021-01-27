@@ -9,10 +9,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
   
     // Get a specific artwork
     const getArtworkData = (id) => {
-      fetch(`/artwork/${id}`, {
-        method: 'GET',
-        headers: {
-          'Content-Type': 'application/json',
+        fetch(`/api/artworks/${id}`, {
+            method: 'GET',
+            headers: {
+            'Content-Type': 'application/json',
         },
       })
         .then((response) => response.json())
@@ -33,14 +33,14 @@ document.addEventListener('DOMContentLoaded', (e) => {
           }
         })
         .catch((error) => {
-          console.error('Error:', error);
+            console.error('Error:', error);
         });
     };
   
     // Extract the artwork ID from the URL
     if (url.indexOf('?artwork_id=') !== -1) {
-      artworkId = url.split('=')[1];
-      getArtworkData(artworkId);
+        artworkId = url.split('=')[1];
+        getArtworkData(artworkId);
     }
   
     // Get elements from the page
@@ -58,67 +58,69 @@ document.addEventListener('DOMContentLoaded', (e) => {
     categoryInput.value = 'Painting';
   
     const handleFormSubmit = (e) => {
-      e.preventDefault();
-      if (!titleInput.value || !bodyInput.value || !postedByInput.value || !yearInput.value || !categoryInput.value || !conditionInput.value || !imageInput.value) {
-        alert('Your post is missing some content');
-      }
+        e.preventDefault();
+        if (!titleInput.value || !bodyInput.value || !postedByInput.value || !yearInput.value || !categoryInput.value || !conditionInput.value || !imageInput.value) {
+            alert('Your post is missing some content');
+        }
   
       // Create a newArtwork object to send off to the backend
       const newArtwork = {
-        title: titleInput.value.trim(),
-        postedBy: postedByInput.value,
-        year: yearInput.value.trim(),
-        body: bodyInput.value.trim(),
-        category: categoryInput.value,
-        condtion: conditionInput.value,
-        image: imageInput.value,
+            title: titleInput.value.trim(),
+            postedBy: postedByInput.value,
+            year: yearInput.value.trim(),
+            body: bodyInput.value.trim(),
+            category: categoryInput.value,
+            condtion: conditionInput.value,
+            image: imageInput.value,
 
-      };
-      console.log('handleFormSubmit -> newArtwork', newArtwork);
+        };
+        console.log('handleFormSubmit -> newArtwork', newArtwork);
   
-      // Check if the user is updating or creating and perform said function
-      if (updating) {
-        newArtwork.id = artworkId;
-        updateArtwork(newArtwork);
-      } else {
-        submitArtwork(newArtwork);
-      }
+        // Check if the user is updating or creating and perform said function
+        if (updating) {
+            newArtwork.id = artworkId;
+            updateArtwork(newArtwork);
+        } else {
+            submitArtwork(newArtwork);
+        }
     };
   
     // Event listener for when the artwork is submitted
     createArt.addEventListener('submit', handleFormSubmit);
   
-    // Event handler for when a user submits an artwork
+    // Event handler for when a user submits an artwork and brings user to members
     const submitArtwork = (artwork) => {
         console.log(artwork)
       fetch('/api/artworks', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify(artwork),
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log('Success in submitting artwork:', data);
-          window.location.href = './members.html';
+            console.log('Success in submitting artwork:', data);
+            window.location.href = './members.html';
         })
         .catch((error) => {
-          console.error('Error:', error);
+            console.error('Error:', error);
         });
     };
   
-    // Update a post and bring user to /artwork
+    // Update a artwork and bring user to members
     const updateArtwork = (artwork) => {
-      fetch('/api/artworks', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(artwork),
-      })
-        .then(() => {
-            console.log('Attempting update to artwork');
+        console.log("artwork", artwork)
+        fetch(('/api/artworks/'+ artworkId), {
+            method: 'PUT',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(artwork),
+        })
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Attempting update artwork', data);
             window.location.href = './members.html';
         })
         .catch((error) => {
