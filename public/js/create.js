@@ -94,31 +94,32 @@ document.addEventListener('DOMContentLoaded', (e) => {
       fetch('/api/artworks', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+            'Content-Type': 'application/json',
         },
         body: JSON.stringify(artwork),
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log('Success in submitting artwork:', data);
-          window.location.href = './members.html';
+            console.log('Success in submitting artwork:', data);
+            window.location.href = './members.html';
         })
         .catch((error) => {
-          console.error('Error:', error);
+            console.error('Error:', error);
         });
     };
   
     // Update a post and bring user to /artwork
     const updateArtwork = (artwork) => {
-      fetch('/api/artworks', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(artwork),
-      })
+        console.log("artwork", artwork)
+        fetch(`/api/artworks/`+ artworkId, {
+            method: 'PUT',
+            headers: {
+            'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(artwork),
+        })
         .then(() => {
-            console.log('Attempting update to artwork');
+            console.log('Attempting update artwork');
             window.location.href = './members.html';
         })
         .catch((error) => {

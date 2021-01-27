@@ -35,7 +35,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
     const updateArtwork = (artwork) => {
         console.log('attempting to update', artwork);
-        fetch('/api/artworks', {
+        fetch(`/api/artworks/${id}`, {
           method: 'PUT',
           headers: {
             'Content-Type': 'application/json',

@@ -36,7 +36,8 @@ module.exports = (app) => {
   });
 
 
-  app.put('api/artworks/', (req, res) => {
+  app.put('/api/artworks/:id', (req, res) => {
+      console.log(req.body)
     db.Artwork.update(
         {
         title: req.body.title,
@@ -49,12 +50,13 @@ module.exports = (app) => {
         },
         {
             where: {
-                id: req.body.id,
+                id: req.params.id,
             },
         }
     )
-    console.log(dbArtwork)
-    .then((dbArtwork) => res.json(dbArtwork));
- 
+    .then((dbArtwork) => {
+        console.log(dbArtwork);
+        res.json(dbArtwork)
+    });
   });
 };
