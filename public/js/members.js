@@ -33,14 +33,15 @@ document.addEventListener('DOMContentLoaded', (e) => {
         .catch((error) => console.error('Error:', error));
     };
 
+    // function to update the artwork
     const updateArtwork = (artwork) => {
         console.log('attempting to update', artwork);
         fetch(`/api/artworks/${id}`, {
-          method: 'PUT',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(artwork),
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(artwork),
         }).then((response) => console.log(response));
     };
 
@@ -127,7 +128,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         newArtworkCardBody.classList.add('card-body');
 
 
-        // New artwork
+        // New artwork what the user will see in the browser
         const newArtworkBody = document.createElement('p');
         newArtworkImage.textContent = artwork.image;
         newArtworkTitle.textContent = artwork.title;
@@ -136,7 +137,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
         newArtworkBody.textContent = ('Description: ' + artwork.body);
         newArtworkCategory.textContent = ('Category: ' + artwork.category);
         newArtworkCondition.textContent = ('Condition: ' + artwork.condition);
-      
+        
+        // Moment used here for the date the user posted the artwork
         let formattedDate = new Date(artwork.createdAt);
         formattedDate = moment(formattedDate).format('MMMM Do YYYY');
         newArtworkDate.textContent = ` (${formattedDate})`;
@@ -186,7 +188,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     artworkInfo.addEventListener('change', handleCategoryChange);
 
 
-  // add artwork button
+  // add artwork button bring user to create page to add artwork
   document.getElementById('addArtworkButton').onclick = () => {
         location.href = './create.html';
     };
