@@ -9,14 +9,14 @@ document.addEventListener('DOMContentLoaded', (e) => {
     let artworks;
   
     // Function to grab artworks from the database
-    const getArtwork = (id) => {
-    //   let categoryString = id || '';
-    //   if (categoryString) {
-    //         categoryString = categoryString.replace(' ', '');
-    //         categoryString = `category/${categoryString}`;
-    //     }
+    const getArtwork = (category) => {
+      let categoryString = category || '';
+      if (categoryString) {
+            categoryString = categoryString.replace(' ', '');
+            categoryString = `category/${categoryString}`;
+        }
   
-      fetch(`/api/artworks/${id}`, {
+      fetch(`/api/artworks/${categoryString}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json',
@@ -35,12 +35,12 @@ document.addEventListener('DOMContentLoaded', (e) => {
     getArtwork();
   
     // Function to help construct the post HTML content inside artworkInfo
-    const initializeRows = (artwork) => {
+    const initializeRows = () => {
         artworkInfo.innerHTML = '';
         const artworksToAdd = [];
   
-        artworksToAdd.push(createRow(artwork));
-        artworkInfo.appendChild(artwork);
+        artworks.forEach((artwork) => artworksToAdd.push(createRow(artwork)));
+        artworksToAdd.forEach((artwork) => artworkInfo.appendChild(artwork));
     };
   
     const createRow = (artwork) => {
