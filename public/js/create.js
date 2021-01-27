@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
   
     // Get a specific artwork
     const getArtworkData = (id) => {
-      fetch(`/artwork/${id}`, {
+      fetch(`/api/artworks/${id}`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',
@@ -111,15 +111,16 @@ document.addEventListener('DOMContentLoaded', (e) => {
     // Update a post and bring user to /artwork
     const updateArtwork = (artwork) => {
         console.log("artwork", artwork)
-        fetch(`/api/artworks/`+ artworkId, {
+        fetch(('/api/artworks/'+ artworkId), {
             method: 'PUT',
             headers: {
             'Content-Type': 'application/json',
             },
             body: JSON.stringify(artwork),
         })
-        .then(() => {
-            console.log('Attempting update artwork');
+        .then((response) => response.json())
+        .then((data) => {
+            console.log('Attempting update artwork', data);
             window.location.href = './members.html';
         })
         .catch((error) => {
