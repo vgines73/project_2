@@ -57,9 +57,14 @@ Then run the database. Afterwords go into your terminal run node server.js. Clic
 
 
 ## Images:
-![screencapture-localhost-8080-create-html-2021-01-27-23_28_34 (1)](https://user-images.githubusercontent.com/71681031/106105187-69e98680-60f8-11eb-904d-b961e211c1ae.png)
+Main Page
 ![screencapture-localhost-8080-2021-01-27-23_28_04 (1)](https://user-images.githubusercontent.com/71681031/106105191-6b1ab380-60f8-11eb-9f91-3784bec9e043.png)
-![screencapture-localhost-8080-create-html-2021-01-27-23_29_22](https://user-images.githubusercontent.com/71681031/106105178-681fc300-60f8-11eb-9441-a2b57f6a9a93.png)
+
+
+Create Page
+![screencapture-localhost-8080-create-html-2021-01-27-23_28_34 (1)](https://user-images.githubusercontent.com/71681031/106105187-69e98680-60f8-11eb-904d-b961e211c1ae.png)
+
+Back to Main Page: Item Created
 ![screencapture-localhost-8080-index-html-2021-01-27-23_29_35](https://user-images.githubusercontent.com/71681031/106105174-6655ff80-60f8-11eb-8b00-e19f7bc3dec5.png)
 
 
