@@ -1,3 +1,5 @@
+console.log("create JS loaded")
+
 // Wait for the DOM to completely load before we run our JS
 document.addEventListener('DOMContentLoaded', (e) => {
     console.log('DOM loaded! 🚀');
@@ -101,7 +103,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         .then((response) => response.json())
         .then((data) => {
             console.log('Success in submitting artwork:', data);
-            window.location.href = './members.html';
+            window.location.href = './index.html';
         })
         .catch((error) => {
             console.error('Error:', error);
@@ -121,7 +123,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         .then((response) => response.json())
         .then((data) => {
             console.log('Attempting update artwork', data);
-            window.location.href = './members.html';
+            window.location.href = './index.html';
         })
         .catch((error) => {
           console.error('Error:', error);

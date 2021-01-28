@@ -9,16 +9,6 @@ module.exports = (app) => {
   app.get('/', (req, res) =>
     res.sendFile(path.join(__dirname, '../public/index.html'))
   );
-
-  // artist route loads artist.html
-  app.get('/artist', (req, res) =>
-    res.sendFile(path.join(__dirname, '../public/artist.html'))
-  );
-
-  // artwork route loads to artwork.html
-  app.get('/artwork', (req, res) => 
-      res.sendFile(path.join(__dirname, '../public/artwork.html'))
-  );
   
   // create route loads to create.html
   app.get('/create', (req, res) => 
