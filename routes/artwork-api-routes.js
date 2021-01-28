@@ -1,6 +1,7 @@
 const db = require('../models');
-
+// backend routes
 module.exports = (app) => {
+    // route to view all the artwork
     app.get('/api/artworks', (req, res) => {
         // Here we add an "include" property to our options in our findAll query
         // We set the value to an array of the models we want to include in a left outer join
@@ -9,7 +10,7 @@ module.exports = (app) => {
         include: [db.Artist],
         }).then((dbArtwork) => res.json(dbArtwork));
     });
-
+    // route to view an artwork by id
     app.get('/api/artworks/:id', (req, res) => {
         // Here we add an "include" property to our options in our findOne query
         // We set the value to an array of the models we want to include in a left outer join

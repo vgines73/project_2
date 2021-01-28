@@ -59,6 +59,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     // Set default value for the category
     categoryInput.value = 'Painting';
   
+    // submit function needs all values or returns the alert
     const handleFormSubmit = (e) => {
         e.preventDefault();
         if (!titleInput.value || !bodyInput.value || !postedByInput.value || !yearInput.value || !categoryInput.value || !conditionInput.value || !imageInput.value) {
@@ -90,7 +91,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     // Event listener for when the artwork is submitted
     createArt.addEventListener('submit', handleFormSubmit);
   
-    // Event handler for when a user submits an artwork and brings user to members
+    // Event handler for when a user submits an artwork and brings user to index
     const submitArtwork = (artwork) => {
         console.log(artwork)
       fetch('/api/artworks', {
@@ -110,7 +111,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         });
     };
   
-    // Update a artwork and bring user to members
+    // Update a artwork and bring user to index
     const updateArtwork = (artwork) => {
         console.log("artwork", artwork)
         fetch(('/api/artworks/'+ artworkId), {

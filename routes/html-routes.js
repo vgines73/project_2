@@ -1,7 +1,7 @@
 // Dependencies
 const path = require('path');
 
-// Routes
+// Front End Routes
 module.exports = (app) => {
   // Each of the below routes just handles the HTML page that the user gets sent to.
 

@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     if (e) {
         console.log('DOM loaded! 🚀');
     }
-  
+    // grabbing the class so we can put the info there
     const artworkInfo = document.querySelector('.artwork-info');
   
     let artworks;
@@ -69,7 +69,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         artworks.forEach((artwork) => artworksToAdd.push(createNewRow(artwork)));
         artworksToAdd.forEach((artwork) => artworkInfo.appendChild(artwork));
     };
-  
+    // createa a new round for each card
     const createNewRow = (artwork) => {
         // Artworkcard div
         const newArtworkCard = document.createElement('div');
@@ -144,6 +144,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
         formattedDate = moment(formattedDate).format('MMMM Do YYYY');
         newArtworkDate.textContent = ` (${formattedDate})`;
   
+        // all values appended to HTML
         newArtworkTitle.appendChild(newArtworkDate);
         newArtworkCardHeading.appendChild(deleteBtn);
         newArtworkCardHeading.appendChild(editBtn);
