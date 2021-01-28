@@ -34,6 +34,24 @@ document.addEventListener('DOMContentLoaded', (e) => {
     // Getting inital list of artwork
     getArtwork();
   
+    const viewArtwork = (id) => {
+        console.log('attempting to view one Artwork', id);
+        fetch(`/api/artworks/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                artworks = data;
+                console.log('success in viewing one Artwork', data)
+                pushRow();
+            })
+            .catch((error) => console.error('Error:', error))
+    };
+    viewArtwork()
     // Function to help construct the post HTML content inside artworkInfo
     const initializeRows = () => {
         artworkInfo.innerHTML = '';
@@ -123,4 +141,10 @@ document.addEventListener('DOMContentLoaded', (e) => {
     };
     artworkInfo.addEventListener('view', handleArtworkView);
 
+    const handleCategoryChange = (e) => {
+        const newArtworkCategory = e.target.value;
+        console.log('handleCategoryChange -> newArtworkCategory', newArtworkCategory);
+        getArtwork(newArtworkCategory.toLowerCase());
+    };
+    artworkInfo.addEventListener('change', handleCategoryChange);
 });
