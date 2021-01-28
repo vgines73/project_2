@@ -1,5 +1,5 @@
 console.log("create JS loaded")
-
+// create page functionality
 // Wait for the DOM to completely load before we run our JS
 document.addEventListener('DOMContentLoaded', (e) => {
     console.log('DOM loaded! 🚀');
@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', (e) => {
     let artworkId;
     let updating = false;
   
-    // Get a specific artwork
+    // Get a specific artwork by id 
     const getArtworkData = (id) => {
         fetch(`/api/artworks/${id}`, {
             method: 'GET',

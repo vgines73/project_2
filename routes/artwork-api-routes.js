@@ -1,5 +1,5 @@
 const db = require('../models');
-// backend routes
+// backend routes for artwork
 module.exports = (app) => {
     // route to view all the artwork
     app.get('/api/artworks', (req, res) => {

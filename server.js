@@ -1,8 +1,12 @@
-// dependency to get the server running
+// Dependency to get the server running
 const express = require('express');
 
 // Requiring our Routes
+
+// Front end routes
 const htmlRouter = require('./routes/html-routes.js');
+
+// Backend Routes
 const artistRouter = require('./routes/artist-api-routes.js');
 const artworkRouter = require('./routes/artwork-api-routes.js');
 

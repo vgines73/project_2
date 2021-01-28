@@ -1,5 +1,5 @@
 const db = require("../models")
-
+// creating info for database to insert values into the table for artworks
 db.Artwork.create({
     title:"Repent and Sin No More (Negative)",
     postedBy:"",
