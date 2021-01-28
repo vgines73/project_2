@@ -74,7 +74,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
         // Artworkcard div
         const newArtworkCard = document.createElement('div');
         // added 2 classes so card can be wrapped
-        newArtworkCard.classList.add('card', 'col-md-4'); 
+        newArtworkCard.classList.add('card', 'col-md-4');
+        newArtworkCard.setAttribute('id', 'art-card');
    
   
         // Heading
