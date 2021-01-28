@@ -88,7 +88,7 @@ Link to my Github profile: https://github.com/vgines73
 
 Link to my forked Project 2: https://github.com/vgines73/project_2
 
-Link to deployed heroku: 
+Link to deployed heroku: https://ancient-waters-03417.herokuapp.com/
 
 You can reach me by email at: vgines73@gmail.com
 
