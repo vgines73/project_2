@@ -1,5 +1,5 @@
 const db = require('../models');
-// backend routes for artwork to be displayed on the browser side
+// backend routes for artwork to be displayed on the browser
 module.exports = (app) => {
     // route to view all the artwork
     app.get('/api/artworks', (req, res) => {

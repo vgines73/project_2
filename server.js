@@ -7,7 +7,7 @@ const express = require('express');
 const htmlRouter = require('./routes/html-routes.js');
 
 // Backend Routes
-const artistRouter = require('./routes/artist-api-routes.js');
+// const artistRouter = require('./routes/artist-api-routes.js');
 const artworkRouter = require('./routes/artwork-api-routes.js');
 
 // Sets up the Express App
@@ -26,7 +26,7 @@ app.use(express.static('public'));
 
 // Invoke routes
 htmlRouter(app);
-artistRouter(app);
+// artistRouter(app);
 artworkRouter(app);
 
 // Syncing our sequelize models and then starting our Express app
