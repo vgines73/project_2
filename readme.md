@@ -73,15 +73,7 @@ View the demo by clicking the link: https://drive.google.com/file/d/16ZNIVMRK9ax
 
 
 ## Challenges:
-As a group, we needed to figure out what to build. Once we came to an agreement, we had a bunch of ideas that were not fully completed. We wanted to create a user login and password so each user can enter their own artwork; a page that views all artwork; a page to view all artists; and a page that views each artwork blown up. If you check out my test branch you'll see what was created. 
-
-
-Individually we all had our own challenges, but we all took part on what we needed to do to get this project functional, and complete. 
-
-
-Also, adding another npm package that wasn't discussed or used in class was difficult because of time restraints trying to complete the project and reading those documents. 
-
-Deploying from Heroku was another issue we came across. Kept getting errors trying to get it deployed.
+As a group, we needed to figure out what to build. Once we came to an agreement, we had a bunch of ideas that were not fully completed. We wanted to create a user login and password so each user can enter their own artwork; a page that views all artwork; a page to view all artists; and a page that views each artwork blown up. If you check out my test branch you'll see what was created. When we tried to clean up the code and remove routes for the artist our code broke and couldn't figure out how to make it still work. Individually we all had our own challenges, but we all took part on what we needed to do to get this project functional, and complete. Also, adding another npm package that wasn't discussed or used in class was difficult because of time restraints trying to complete the project and reading those documents. Deploying from Heroku was another issue we came across. Kept getting errors trying to get it deployed. Once finally deployed we couldn't figure out how to get the seed.js to populate.  However, the add is still functional. App is still able to do CRUD functionality. 
 
 ## Future Developments:
 - A Navbar with the title of the app along with other tabs with all the info I mentioned in the challenges. Maybe also create a tab where the user can also sell or buy artwork as well, chat and messaging features, linking to other social media accounts, and a message board to encourage artists community.

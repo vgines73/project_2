@@ -1,3 +1,5 @@
+// connects to the database and imports the data
+
 const fs = require('fs');
 const path = require('path');
 const Sequelize = require('sequelize');
